@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+
+    <style>
+        body {
+            padding: 150px 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #container {
+            text-align: center;
+            background-color: burlywood;
+            padding: 80px;
+        }
+
+        .input-div {
+            display: inline-block;
+            margin-right: -15px;
+            margin-left: -21px;
+        }
+
+        label {
+            font-size: 18px;
+            font-family: fangsong;
+        }
+
+        .inp {
+            padding: 5px;
+            width: 80%;
+            margin: 7px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div class="input-div">
+            <label>Celsius</label><br>
+            <input type="number" value="0" class="inp" id="cel">
+        </div>
+        <div class="input-div">
+            <label>Fahrenheit</label><br>
+            <input type="number" value="32" class="inp" id="fah">
+        </div>
+    </div>
+
+
+
+    <script>
+
+        // let cel = document.getElementById("cel");
+        // let fah = document.getElementById("fah");
+
+        // cel.addEventListener('input', function(){
+        //     let c = this.value;
+        //     let f = (c * 9/5) + 32
+        //     if(!Number.isInteger(f)){
+        //         f = f.toFixed(4);
+        //     }
+        //     fah.value = f
+
+        // });
+
+        // fah.addEventListener('input', function(){
+        //     let f = this.value;
+        //     let c = (f - 32) * 5/9
+        //     if(!Number.isInteger(c)){
+        //         c = c.toFixed(4);
+        //     }
+        //     cel.value = c
+        // });
+
+
+
+        let cel = document.getElementById("cel");
+        let fah = document.getElementById("fah");
+
+        cel.addEventListener('input', function (e) {
+            let c = e.target.value;
+            let f = (c * 9 / 5) + 32
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+            fah.value = f;
+        });
+
+        fah.addEventListener('input', function (e) {
+            let f = e.target.value;
+            let c = (f - 32) * 5 / 9
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+            cel.value = c;
+        });
+
+        cel.addEventListener("keypress", function (e) {
+            if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 46)) {
+                e.preventDefault();
+            }
+        });
+
+        fah.addEventListener("keypress", function (e) {
+            if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 46)) {
+                e.preventDefault();
+            }
+        });
+
+        cel.addEventListener("paste", function (e) {
+            e.preventDefault();
+        });
+
+        fah.addEventListener("paste", function (e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

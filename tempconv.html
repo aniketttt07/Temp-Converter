@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .converter {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Temperature Converter</h1>
+    <div class="converter">
+        <label for="cel">Celsius:</label>
+        <input type="text" value="0" id="cel">
+        <label for="fah">Fahrenheit:</label>
+        <input type="text" value="32" id="fah">
+    </div>
+
+
+    <script>
+        let cel = document.getElementById("cel");
+        let fah = document.getElementById("fah");
+
+        cel.addEventListener('input', function(){
+            let c = this.value;
+            let f = (c * 9/5) + 32
+            if(!Number.isInteger(f)){
+                f = f.toFixed(4);
+            }
+            let operators = new RegExp("[-+/*]");
+            if (operators.test(c)) {
+                c = c.replace(operators, '');
+                this.value = c;
+            }
+            fah.value = f;
+        });
+
+        fah.addEventListener('input', function(){
+            let f = this.value;
+            let c = (f - 32) * 5/9
+            if(!Number.isInteger(c)){
+                c = c.toFixed(4);
+            }
+            let operators = new RegExp("[-+/*]");
+            if (operators.test(f)) {
+                f = f.replace(operators, '');
+                this.value = f;
+            }
+            cel.value = c;
+        });
+
+       
+
+
+
+
+    </script>
+</body>
+
+</html>
